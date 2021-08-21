@@ -1,0 +1,24 @@
+:root {
+    --dark-gray: #191919;
+
+	--leonardo-red: #E4002B;
+	--leonardo-red-darker: #B10000;
+	--leonardo-blue: #485CC7;
+	--leonardo-yellow: #F2CD00;
+	--leonardo-green: #00BF6F;
+	--leonardo-gray: #C1C6C8;
+
+	--leonardo-gray-transparent: #C1C6C8B3;
+
+	--off-white: #F5F5F5;
+	--off-white-shadow-light: #DCDCDC;
+	--off-white-shadow-dark: #333333;
+}
+
+.success-green {
+	color: var(--leonardo-green);
+}
+
+.fail-red {
+	color: var(--leonardo-red);
+}
