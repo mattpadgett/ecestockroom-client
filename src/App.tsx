@@ -35,11 +35,11 @@ api.interceptors.request.use((config: any) => {
 		})
 			.then((response) => {
 				authService.setTokensSilently({accessToken: response.data.authToken, refreshToken: response.data.refreshToken});
-				config.headers['authToken'] = response.data.token;
+				config.headers['authToken'] = response.data.authToken;
 				return config;
 			})
 			.catch((error) => {
-				message.error('Unable to validate authentication token. Please log in again.1');
+				message.error('Unable to validate authentication token. Please log in again.');
 				authService.clearTokens();
 				return Promise.reject(error);
 			})
@@ -76,7 +76,7 @@ const App = () => {
 					setInitializing(false);
 				})
 				.catch((error) => {
-					message.error('Unable to validate authentication token. Please log in again.2');
+					message.error('Unable to validate authentication token. Please log in again.');
 					authService.clearTokensSilently();
 
 					setAuthenticated(false);

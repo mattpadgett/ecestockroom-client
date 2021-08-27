@@ -247,7 +247,7 @@ const StudentTools = () => {
 				<Breadcrumb.Item>Tools</Breadcrumb.Item>
 			</Breadcrumb>
 
-			<div style={{textAlign: 'center', paddingRight: '16px'}}>
+			<div className={'view-container'}>
 				<Typography.Title level={2}>Tools</Typography.Title>
 
 				{

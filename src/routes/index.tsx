@@ -1,6 +1,7 @@
 import Home from "../views/common/Home";
 import StudentTools from "../views/topLevel/StudentTools";
 import {adminRoutes} from "./admin";
+import {proPointsRoutes} from "./proPoints";
 
 export interface RouteDefinition {
 	name: string;
@@ -20,7 +21,7 @@ export const homeRoute = {
 export const studentToolsRoute = {
 	name: "Tools",
 	path: "/stutools",
-	exact: true,
+	exact: false,
 	component: StudentTools
 }
 
@@ -33,4 +34,4 @@ export const statsRoute = {
 
 export const indexRoutes = [statsRoute, studentToolsRoute, homeRoute];
 
-export const routes = [...adminRoutes, ...indexRoutes];
+export const routes = [...adminRoutes, ...proPointsRoutes, ...indexRoutes];

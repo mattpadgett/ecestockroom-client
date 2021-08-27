@@ -9,13 +9,15 @@ import {Col, Layout, Menu, Row, Typography, Image, message} from "antd";
 import {
 	BarsOutlined,
 	BuildOutlined,
+	CalendarOutlined,
 	DollarCircleOutlined, FireOutlined,
 	HomeOutlined,
+	IdcardOutlined,
 	LogoutOutlined,
 	PlusOutlined, RiseOutlined,
 	SettingOutlined,
 	ShoppingCartOutlined,
-	SolutionOutlined, ToolOutlined, UsergroupAddOutlined,
+	SolutionOutlined, ThunderboltOutlined, ToolOutlined, UsergroupAddOutlined,
 	UserOutlined
 } from '@ant-design/icons';
 import AuthService from "../services/AuthService";
@@ -62,15 +64,12 @@ const SidebarLayout = () => {
 					<Menu.Item key={'/naughty'} icon={<FireOutlined />}>
 						<NavLink to={'/naughty'}>Naughty List</NavLink>
 					</Menu.Item>
-					<Menu.SubMenu key={2} icon={<SettingOutlined />} title={'Management'}>
-						<Menu.Item key={'/admin/stutools'}>
-							<NavLink to={'/admin/stutools'}>Student Tools</NavLink>
-						</Menu.Item>
+					<Menu.SubMenu key={'33cf1bb2-a1b7-40c9-ad70-210577a1fe02'} icon={<SettingOutlined />} title={'Management'}>
 						<Menu.Item key={'/admin/users'} icon={<UserOutlined />}>
 							<NavLink to={'/admin/users'}>Users</NavLink>
 						</Menu.Item>
 						<Menu.Item key={'/admin/roles'} icon={<UsergroupAddOutlined />}>
-							<NavLink to={'/admin/roles'}>Roles & Permissions</NavLink>
+							<NavLink to={'/admin/roles'}>Roles</NavLink>
 						</Menu.Item>
 					</Menu.SubMenu>
 					<Menu.Item key={'/certs'} icon={<SolutionOutlined />}>
@@ -79,6 +78,30 @@ const SidebarLayout = () => {
 					<Menu.Item key={'/stutools'} icon={<ToolOutlined />}>
 						<NavLink to={'/stutools'}>Student Tools</NavLink>
 					</Menu.Item>
+					{
+						authService.checkAccess('ppEventMgr') || authService.checkAccess('ppEventView') || authService.checkAccess('ppSwipe') ?
+							<Menu.SubMenu key={'1fe4de91-7598-4cbb-87cf-955eba951764'} icon={<ThunderboltOutlined />} title={'Pro Points'}>
+								{
+									authService.checkAccess('ppSwipe') ?
+										<Menu.Item key={'/pp/swipe'} icon={<IdcardOutlined/>}>
+											<NavLink to={'/pp/swipe'}>Swipe</NavLink>
+										</Menu.Item>
+									:
+										null
+								}
+
+								{
+									authService.checkAccess('ppEventMgr') || authService.checkAccess('ppEventView') ?
+										<Menu.Item key={'/pp/events'} icon={<CalendarOutlined />}>
+											<NavLink to={'/pp/events'}>Events</NavLink>
+										</Menu.Item>
+									:
+										null
+								}
+							</Menu.SubMenu>
+						:
+							null
+					}
 					<Menu.Item key={'/metrics'} icon={<RiseOutlined />}>
 						<NavLink to={'/metrics'}>Metrics</NavLink>
 					</Menu.Item>
